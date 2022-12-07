@@ -9,9 +9,11 @@ h1{
 
 .MainControls, .GameControls {
     display: inline;
-    
 }
 
 #Start, #Stop, #DrawCard, #StayHere {
-    
+    border: solid darkred 3px;
+    border-radius: 15px;
+    background-color: darkred;
+    color: white;
 }
