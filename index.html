@@ -12,25 +12,38 @@
     <br>
     <br>
     <section id="Game">
+
         <!-- *Controles principales para el juego -->
         <div class="MainControls">
             <button id="Start">Play</button>
             <button id="Reset">Reset</button>
         </div>
+
         <section id="InGame">
             <div id="Crupier">
-                <p>hola</p>
+                <p>Este es el crupier</p>
             </div>
-
             <div id="Player">
-                <p>otro hola</p>
+                <p>Tu eres el jugador</p>
             </div>
         </section>
+
         <!-- *Controles dentro para el juego -->
         <div class="GameControls">
             <button id="DrawCard">One More</button>
-            <button id="StayHere">No More</button>
+            <button id="StayHere" onclick="noCard(), dealerPlay()">No More</button>
         </div>
+    </section>
+
+    <section id="rules">
+        <p>
+            Esto es Blackjack, las reglas son simples. <br>
+            El objetivo es acercarse lo mas posible a 21 puntos sin pasarse. <br>
+            La victoria contra el crupier se paga 1 a 1 <br>
+            El BlackJack se paga  3 a 2 <br>
+            El seguro paga 2 a 1 <br>
+            <strong>El crupier debe pedir en 16 y plantarse en 17<strong>
+        </p>
     </section>
 
     <script src="app.js"></script>
