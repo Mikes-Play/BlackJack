@@ -101,7 +101,7 @@ function KeepPlaying(){
         if (score>21) {
             Player.innerHTML+="Tienes"+" "+score+" "+"puntos. ¡Te Pasaste! "
             Player.innerHTML+="Perdiste, pero puedes volver a intentarlo";
-            playBtn.disabled=true, drawBtn.disabled=true
+            playBtn.disabled=true, drawBtn.disabled=true, stayBtn.disabled=true
         }
         else{
             Player.innerHTML+="Tienes"+" "+score+" "+"puntos"
@@ -159,7 +159,7 @@ function dealerFirstCard (){
 
 //*Repartir el resto de cartas al Dealer
 function dealerCards() {
-    while (dealerScore<16) {
+    while (dealerScore<=16) {
         dealerCardNumber=Cards[Math.floor(Math.random()*12)]
         dealerCardSymbol=Symbols[Math.floor(Math.random()*3)]
         Crupier.innerHTML+='<p> La carta del crupier es un '+dealerCardNumber+' de '+dealerCardSymbol+'</p>'
