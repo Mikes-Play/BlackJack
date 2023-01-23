@@ -81,7 +81,7 @@ function SaveCard(){
 //*Dejar de dar carta al jugador
 function noCard() {
     Player.innerHTML+='<p> Te plantas ante el crupier con '+score+' puntos! </p>'
-    playBtn.disabled=true, drawBtn.disabled=true, stayBtn.disabled=true
+    playBtn.disabled=true, drawBtn.disabled=true
 
 }
 
@@ -203,18 +203,18 @@ function checkDealerBlackjack() {
 function winOrLose() {
     if (dealerScore<=21) {
         if (dealerScore==score) {
-            Player.innerHTML+= "¡EMPATE!"
+            Player.innerHTML+= "¡EMPATE!", stayBtn.disabled=true
         }
         else{
             if (dealerScore<score) {
-                Player.innerHTML+="¡TU GANAS ANTE EL CRUPIER! ¡FELICIDADES!"
+                Player.innerHTML+="¡TU GANAS ANTE EL CRUPIER! ¡FELICIDADES!", stayBtn.disabled=true
         }
         else{
-            Crupier.innerHTML+="¡EL CRUPIER GANA! Lo sentimos"}}
+            Crupier.innerHTML+="¡EL CRUPIER GANA! Lo sentimos", stayBtn.disabled=true}}
 
         
     }
-    else{Crupier.innerHTML+="¡El crupier se pasó de 21!", Player.innerHTML+= "¡TU GANAS!"}
+    else{Crupier.innerHTML+="¡El crupier se pasó de 21!", Player.innerHTML+= "¡TU GANAS!", stayBtn.disabled=true}
 
     
 }
