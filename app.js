@@ -81,7 +81,7 @@ function SaveCard(){
 //*Dejar de dar carta al jugador
 function noCard() {
     Player.innerHTML+='<p> Te plantas ante el crupier con '+score+' puntos! </p>'
-    playBtn.disabled=true, drawBtn.disabled=true
+    playBtn.disabled=true, drawBtn.disabled=true, stayBtn.disabled=true
 
 }
 
