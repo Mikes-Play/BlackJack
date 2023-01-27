@@ -6,19 +6,18 @@ let score=0
 let dealerScore=0
 
 playBtn=document.querySelector("#Start");
-playBtn.addEventListener("click", Start);
+playBtn.addEventListener('click', Start);
 
 drawBtn=document.querySelector("#DrawCard");
-drawBtn.addEventListener("click", Play);
+drawBtn.addEventListener('click', Play);
 
 stayBtn=document.querySelector("#StayHere")
-stayBtn=addEventListener("onclick", noCard);
+
 
 resetBtn=document.querySelector("#Reset");
-resetBtn.addEventListener("click", Reset);
+resetBtn.addEventListener('click', Reset);
 
 Player=document.querySelector("#Player");
-
 
 //*Array con valores y simbolos de las cartas
 Cards=["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10],
@@ -42,8 +41,7 @@ function Start() {
     noMore()
     Player.innerHTML+="Tienes"+" "+score+" "+"puntos"
     dealerFirstCard()
-    playBtn.disabled=true
-
+    playBtn.disabled=true, resetBtn.disabled=false, drawBtn.disabled=false, stayBtn.disabled=false
 }
 
 
@@ -54,7 +52,6 @@ function GiveCard(){
     cardNumber=Cards[Math.floor(Math.random()*12)]
     cardSymbol=Symbols[Math.floor(Math.random()*3)]
     Player.innerHTML+='<p> Tu carta es un'+' '+cardNumber+' '+'de'+' '+cardSymbol+'</p>'
-    
 }
 
 
@@ -79,18 +76,17 @@ function SaveCard(){
 
 
 //*Dejar de dar carta al jugador
-function noCard() {
+function NoCard() {
     Player.innerHTML+='<p> Te plantas ante el crupier con '+score+' puntos! </p>'
-    playBtn.disabled=true, drawBtn.disabled=true
-
-}
+    drawBtn.disabled=true, stayBtn.disabled=true
+};
 
 
 //*Verificar si tiene BlackJack (x=21 if numOfCards=2)
 function CheckBlackjack() {
     if (CardValue[0]+CardValue[1]==21) {
         Player.innerHTML+=' '+" ¡BLACKJACK! "
-        playBtn.disabled=true
+        drawBtn.disabled=true, stayBtn.disabled=true
     }
     else {};
 }
@@ -101,7 +97,7 @@ function KeepPlaying(){
         if (score>21) {
             Player.innerHTML+="Tienes"+" "+score+" "+"puntos. ¡Te Pasaste! "
             Player.innerHTML+="Perdiste, pero puedes volver a intentarlo";
-            playBtn.disabled=true, drawBtn.disabled=true, stayBtn.disabled=true
+            drawBtn.disabled=true, stayBtn.disabled=true
         }
         else{
             Player.innerHTML+="Tienes"+" "+score+" "+"puntos"
@@ -113,7 +109,7 @@ function KeepPlaying(){
 //*Deshabilitar btn #DrawCard
 function noMore() {
     if (score==21) {
-        playBtn.disabled=true, drawBtn.disabled=true
+        drawBtn.disabled=true
     }
 }
 
@@ -137,7 +133,8 @@ function Reset() {
     Player.innerHTML="Tu eres el Jugador"
     Crupier.innerHTML="Este es el Crupier"
     playBtn.disabled=false
-    drawBtn.disabled=false
+    stayBtn.disabled=true
+    drawBtn.disabled=true
 }
 
 
@@ -200,23 +197,23 @@ function checkDealerBlackjack() {
 
 
 //* Determinar victoria o derrota del PLayer vs Crupier
-function winOrLose() {
+function winOrLose(){
     if (dealerScore<=21) {
         if (dealerScore==score) {
-            Player.innerHTML+= "¡EMPATE!", stayBtn.disabled=true
-        }
+            Player.innerHTML+= "¡EMPATE!"
+            drawBtn.disabled=true, stayBtn.disabled=true}
         else{
-            if (dealerScore<score) {
-                Player.innerHTML+="¡TU GANAS ANTE EL CRUPIER! ¡FELICIDADES!", stayBtn.disabled=true
+            if (dealerScore<score){
+                Player.innerHTML+="¡TU GANAS ANTE EL CRUPIER! ¡FELICIDADES!"
+                drawBtn.disabled=true, stayBtn.disabled=true}
+            else{
+                Crupier.innerHTML+="¡EL CRUPIER GANA! Lo sentimos"
+                drawBtn.disabled=true, stayBtn.disabled=true}
         }
-        else{
-            Crupier.innerHTML+="¡EL CRUPIER GANA! Lo sentimos", stayBtn.disabled=true}}
-
-        
     }
-    else{Crupier.innerHTML+="¡El crupier se pasó de 21!", Player.innerHTML+= "¡TU GANAS!", stayBtn.disabled=true}
-
-    
+    else{
+        Crupier.innerHTML+="¡El crupier se pasó de 21!", Player.innerHTML+= "¡TU GANAS!"
+        drawBtn.disabled=true, stayBtn.disabled=true}
 }
 
 //*Funcion integral del Dealer
