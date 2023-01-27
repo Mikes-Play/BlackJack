@@ -16,7 +16,7 @@
         <!-- *Controles principales para el juego -->
         <div class="MainControls">
             <button id="Start">Play</button>
-            <button id="Reset">Reset</button>
+            <button id="Reset" disabled="true">Reset</button>
         </div>
 
         <section id="InGame">
@@ -30,8 +30,8 @@
 
         <!-- *Controles dentro para el juego -->
         <div class="GameControls">
-            <button id="DrawCard">One More</button>
-            <button id="StayHere" onclick="noCard(), dealerPlay()">No More</button>
+            <button id="DrawCard" disabled="true">One More</button>
+            <button id="StayHere" onclick="NoCard(), dealerPlay()" disabled="true"> No More </button>
         </div>
     </section>
 
